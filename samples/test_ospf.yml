@@ -1,0 +1,10 @@
+---
+test_command_ospf:
+  - command: show ospf neighbor
+  - iterate:
+     xpath: ospf-neighbor
+id: './neighbor-address'
+      tests:
+- no-diff: ospf-neighbor-state
+err: "Failed. Neighbor State has changed, before it was <{{pre['ospf-neighbor-state']}}>, and now it is <{{post['ospf-neighbor-state']}}>"
+info: "Test Passed! Neighbor State is the same, it is <{{post['ospf-neighbor-state']}}>"
